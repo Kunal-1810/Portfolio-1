@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kunal | Full Stack Developer (MERN)</title>
+<meta name="description" content="Kunal is a full-stack developer who builds and deploys MERN apps: job portals, online stores and rental listings. Based in Rewari, Haryana.">
+<meta property="og:title" content="Kunal | Full Stack Developer">
+<meta property="og:description" content="MERN projects taken from UI to database, authentication and live deployment.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⌨️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF1F6; --surface:#FFFFFF; --ink:#14213D; --muted:#55627D; --line:#C9D1E0;
+  --accent:#2F5BEA; --accent-ink:#FFFFFF; --signal:#E8590C;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Figtree","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1626; --surface:#18223A; --ink:#E9EEF9; --muted:#9AA7C2; --line:#2B3856;
+    --accent:#7C9BFF; --accent-ink:#0F1626; --signal:#FF8A4C;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1626; --surface:#18223A; --ink:#E9EEF9; --muted:#9AA7C2; --line:#2B3856;
+  --accent:#7C9BFF; --accent-ink:#0F1626; --signal:#FF8A4C;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);line-height:1.05;letter-spacing:-.02em}
+
+/* nav */
+header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px}
+.logo{font:800 1.25rem var(--display);text-decoration:none}
+.links{display:flex;gap:22px;font-weight:500;font-size:.97rem}
+.links a{text-decoration:none;color:var(--muted)}
+.links a:hover{color:var(--ink)}
+#theme{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:6px 14px;font:500 .875rem var(--body);cursor:pointer}
+#theme:hover{border-color:var(--accent)}
+
+/* hero */
+.hero{padding:88px 0 72px}
+.status{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.95rem;color:var(--muted);margin-bottom:28px}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--signal);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--signal) 60%,transparent)}70%,100%{box-shadow:0 0 0 12px transparent}}
+h1{font-size:clamp(2.8rem,8.4vw,6.4rem);font-weight:800;max-width:14ch}
+.lede{max-width:56ch;margin-top:28px;color:var(--muted);font-size:1.2rem}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.btn{display:inline-block;padding:13px 24px;border-radius:10px;font-weight:600;text-decoration:none;border:1.5px solid var(--ink)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn:not(.primary):hover{background:var(--surface)}
+
+/* sections */
+section{padding:72px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;margin-bottom:40px}
+
+/* projects as rows */
+.proj{display:grid;grid-template-columns:1fr 1.3fr auto;gap:24px;align-items:start;padding:28px 0;border-top:1px solid var(--line)}
+.proj:last-child{border-bottom:1px solid var(--line)}
+.proj h3{font-size:1.7rem;font-weight:800}
+.proj .kind{color:var(--muted);font-size:.95rem;margin-top:6px}
+.proj p{max-width:52ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;list-style:none;padding:0}
+.chips li{font-size:.82rem;font-weight:600;padding:3px 11px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+.plinks{display:flex;flex-direction:column;gap:8px;min-width:96px;font-weight:600}
+.plinks a{color:var(--accent)}
+.plinks a:hover{text-decoration-thickness:2px}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:36px 32px}
+.skills h3{font-size:1.15rem;margin-bottom:10px}
+.skills ul{list-style:none;padding:0;color:var(--muted)}
+.skills li{padding:2px 0}
+
+/* experience */
+.job{max-width:68ch}
+.job h3{font-size:1.5rem;font-weight:800}
+.job .meta{color:var(--muted);margin:4px 0 16px}
+.job ul{padding-left:1.1em}
+.job li{margin-bottom:8px}
+.edu{margin-top:44px;padding-top:24px;border-top:1px solid var(--line)}
+.edu strong{font-family:var(--display);font-size:1.2rem}
+
+/* contact */
+.contact h2{margin-bottom:20px}
+.mail{font:800 clamp(1.4rem,4.6vw,2.8rem)/1.1 var(--display);word-break:break-all;color:var(--accent);text-decoration-thickness:3px;text-underline-offset:6px}
+.contact ul{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:28px;font-weight:600}
+footer{padding:32px 0 48px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+
+@media (max-width:760px){
+  .links{display:none}
+  .hero{padding:56px 0 48px}
+  .proj{grid-template-columns:1fr;gap:14px}
+  .plinks{flex-direction:row;gap:20px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav aria-label="Main">
+      <a class="logo" href="#top">Kunal</a>
+      <div class="links">
+        <a href="#work">Work</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+      </div>
+      <button id="theme" type="button" aria-label="Switch colour theme">Theme</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <p class="status"><span class="dot" aria-hidden="true"></span>Open to Full Stack Developer roles</p>
+    <h1>I build MERN apps and ship them live.</h1>
+    <p class="lede">I'm Kunal, a full-stack developer in Rewari, Haryana. I take an app from UI design to database, authentication and deployment on Vercel and Render, and I add SEO and Meta Ads knowledge so the sites I build get found.</p>
+    <div class="cta">
+      <a class="btn primary" href="#work">See my projects</a>
+      <a class="btn" href="mailto:kunal181003@gmail.com">Email me</a>
+      <a class="btn" href="Kunal_Resume_fsd.pdf" download>Download resume</a>
+    </div>
+  </div>
+
+  <section id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <h2 id="work-h">Projects</h2>
+
+      <article class="proj">
+        <div><h3>HireLane</h3><p class="kind">Job portal</p></div>
+        <div>
+          <p>A MERN job portal with separate candidate and recruiter roles and role-based login. Candidates browse jobs and apply with a resume upload; recruiters post and manage listings.</p>
+          <ul class="chips"><li>MongoDB</li><li>Express.js</li><li>React</li><li>Node.js</li><li>Vercel</li></ul>
+        </div>
+        <div class="plinks">
+          <a href="#" aria-label="HireLane live demo">Live demo</a><!-- TODO: paste HireLane live URL -->
+          <a href="https://github.com/Kunal-1810/HireLane" aria-label="HireLane source on GitHub">Source</a>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div><h3>Aangan</h3><p class="kind">Rental listings platform</p></div>
+        <div>
+          <p>A full-stack rental listings app with search, filters and an interactive map.</p>
+          <ul class="chips"><li>MongoDB</li><li>Express.js</li><li>React</li><li>Node.js</li><li>Vercel</li></ul>
+        </div>
+        <div class="plinks">
+          <a href="#" aria-label="Aangan live demo">Live demo</a><!-- TODO: paste Aangan live URL -->
+          <a href="https://github.com/Kunal-1810/Aangan" aria-label="Aangan source on GitHub">Source</a>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div><h3>The Clothing Loop</h3><p class="kind">Online clothing store</p></div>
+        <div>
+          <p>A full-stack store with Men, Women and Kids categories, product search and order placement. Registration, login and sessions use a Mongoose User model, and shared Handlebars partials keep the UI consistent.</p>
+          <ul class="chips"><li>Node.js</li><li>Express</li><li>Handlebars</li><li>MongoDB</li><li>Mongoose</li><li>Vercel</li></ul>
+        </div>
+        <div class="plinks">
+          <a href="#" aria-label="The Clothing Loop live demo">Live demo</a><!-- TODO: paste Clothing Loop live URL -->
+          <a href="https://github.com/Kunal-1810/Clothing-website" aria-label="The Clothing Loop source on GitHub">Source</a>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div><h3>Travel LYKKE</h3><p class="kind">Travel agency website</p></div>
+        <div>
+          <p>A multi-page React site with Home, My Bookings, Login and About pages and a shared top navigation bar.</p>
+          <ul class="chips"><li>React</li><li>JavaScript</li><li>CSS</li><li>Vercel</li></ul>
+        </div>
+        <div class="plinks">
+          <a href="#" aria-label="Travel LYKKE live demo">Live demo</a><!-- TODO: paste Travel LYKKE live URL -->
+          <a href="https://github.com/Kunal-1810" aria-label="Kunal on GitHub">GitHub</a><!-- TODO: link the Travel LYKKE repo -->
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills" aria-labelledby="skills-h">
+    <div class="wrap">
+      <h2 id="skills-h">Skills</h2>
+      <div class="skills">
+        <div><h3>Frontend</h3><ul><li>HTML, CSS3, JavaScript</li><li>React</li><li>Handlebars (hbs)</li><li>Responsive layouts</li></ul></div>
+        <div><h3>Backend</h3><ul><li>Node.js, Express.js</li><li>REST-style routes</li><li>Session-based authentication</li></ul></div>
+        <div><h3>Database</h3><ul><li>MongoDB, Mongoose</li><li>MongoDB Atlas</li><li>MongoDB Compass</li></ul></div>
+        <div><h3>Tools and deployment</h3><ul><li>Git, GitHub</li><li>Vercel, Render</li><li>VS Code</li><li>Google Search Console</li></ul></div>
+        <div><h3>Digital marketing</h3><ul><li>SEO: on-page, technical basics, off-page</li><li>Meta Ads: Facebook and Instagram campaigns</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" aria-labelledby="exp-h">
+    <div class="wrap">
+      <h2 id="exp-h">Experience</h2>
+      <div class="job">
+        <h3>Web Developer</h3>
+        <p class="meta">Inclination IT Innovation Pvt. Ltd. &middot; July 2026 to present</p>
+        <ul>
+          <li>Built reusable React components and connected them to Node/Express APIs. Fixed deployment and database connection issues on Vercel and MongoDB Atlas.</li>
+          <li>Developed REST-style API routes and Mongoose schemas to handle users, products and orders in MongoDB.</li>
+          <li>Implemented session-based authentication and responsive layouts, using Git and GitHub for version control across projects.</li>
+        </ul>
+      </div>
+      <div class="job edu">
+        <strong>B.Tech Computer Science (AI)</strong>
+        <p class="meta">Poornima College of Engineering &middot; 2022 to 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <h2 id="contact-h">Let's work together</h2>
+      <a class="mail" href="mailto:kunal181003@gmail.com">kunal181003@gmail.com</a>
+      <ul>
+        <li><a href="tel:+917988255607">+91 79882 55607</a></li>
+        <li><a href="https://github.com/Kunal-1810">GitHub</a></li>
+        <li><a href="#">LinkedIn</a><!-- TODO: paste your LinkedIn URL --></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Kunal &middot; Rewari, Haryana &middot; Built with plain HTML and CSS</div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement,btn=document.getElementById('theme');
+  try{var s=localStorage.getItem('theme');if(s)root.dataset.theme=s;}catch(e){}
+  btn.addEventListener('click',function(){
+    var dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+    var next=dark?'light':'dark';
+    root.dataset.theme=next;
+    try{localStorage.setItem('theme',next);}catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
